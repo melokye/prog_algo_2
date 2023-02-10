@@ -9,64 +9,104 @@ struct Noeud{
 
 struct Liste{
     Noeud* premier;
-    // your code
 };
 
 struct DynaTableau{
     int* donnees;
+    int index; // indique la prochaine place disponible
+    int capacite;
     // your code
 };
 
-
 void initialise(Liste* liste)
 {
-
+    liste->premier = nullptr;
 }
 
 bool est_vide(const Liste* liste)
 {
-    return false;
+    return liste->premier == nullptr;
+    // return false;
 }
 
 void ajoute(Liste* liste, int valeur)
 {
-
+    if(liste->premier == nullptr){
+        liste->premier = new Noeud;
+        liste->premier->donnee = valeur;
+        liste->premier->suivant = nullptr;
+    }else{
+        Noeud *ptr = liste->premier;
+        for (; ptr->suivant != nullptr; ptr = ptr->suivant){}
+        ptr->suivant = new Noeud;
+        ptr = ptr->suivant;
+        ptr->donnee = valeur;
+        ptr->suivant = nullptr;
+    }
 }
 
 void affiche(const Liste* liste)
 {
-
+    for (Noeud *ptr = liste->premier; ptr != nullptr; ptr = ptr->suivant)
+    {
+        std::cout << ptr->donnee << std::endl;
+    }
 }
 
 int recupere(const Liste* liste, int n)
 {
-    return 0;
+    Noeud *ptr = liste->premier;
+    for (int i = 0; i < n ; i++){
+        if(ptr == nullptr){
+            cout << "index out of range, the index asked is " << n << " but the max is " << i << "\n";
+            exit(1);
+        }else{
+            ptr = ptr->suivant;
+        }
+    }
+    return ptr->donnee;
 }
 
 int cherche(const Liste* liste, int valeur)
 {
+    int i = 0;
+    for (Noeud *ptr = liste->premier; ptr != nullptr; ptr = ptr->suivant){
+        if(ptr->donnee == valeur){
+            return i;
+        }
+        i++;
+    }
     return -1;
 }
 
-void stocke(Liste* liste, int n, int valeur)
-{
+void stocke(Liste* liste, int n, int valeur){
+    Noeud *ptr = liste->premier;
+    int i = 0; 
+    while(ptr != nullptr && i < n){
+        ptr = ptr->suivant;
+        i++;
+    }
 
+    if(ptr != nullptr){
+        ptr->donnee = valeur;
+    }
 }
-
-void ajoute(DynaTableau* tableau, int valeur)
-{
-
-}
-
 
 void initialise(DynaTableau* tableau, int capacite)
 {
-
+    tableau->donnees = nullptr;
+    tableau->index = -1; // TODO 
+    tableau->capacite = capacite;
 }
 
 bool est_vide(const DynaTableau* liste)
 {
-    return false;
+    return liste->donnees == nullptr;
+}
+
+void ajoute(DynaTableau* tableau, int valeur)
+{
+    
 }
 
 void affiche(const DynaTableau* tableau)
