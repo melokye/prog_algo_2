@@ -6,10 +6,29 @@
 MainWindow* w=nullptr;
 
 void insertionSort(Array& toSort){
-	Array& sorted=w->newArray(toSort.size());
+    Array& sorted=w->newArray(toSort.size()); // = result
 
 	// insertion sort from toSort to sorted
-	
+    sorted.set(0, toSort.get(0));
+    for(uint i = 1; i < toSort.size(); i++){
+        int n = toSort.get(i);
+
+        bool change = false;
+        for(uint j = 0; j < sorted.size(); j++){
+            int m = sorted.get(j);
+            if(m > n){
+                change = true;
+                sorted.contains(m);
+                sorted.insert(j, n);
+            }
+        }
+
+
+        if(!change){
+
+        }
+    }
+
 	toSort=sorted; // update the original array
 }
 

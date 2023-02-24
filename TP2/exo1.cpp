@@ -5,8 +5,20 @@
 
 MainWindow* w = nullptr;
 
+/*
+On considère la variable toSort non null
+*/
 void selectionSort(Array& toSort){
 	// selectionSort
+    for(uint i = 0; i < toSort.size(); i++){
+        int min = i;
+        for(uint j = i + 1; j < toSort.size(); j++){
+            if(toSort.get(j) < toSort.get(min)){
+                min = j;
+            }
+        }
+        toSort.swap(i, min);
+    }
 }
 
 int main(int argc, char *argv[])
