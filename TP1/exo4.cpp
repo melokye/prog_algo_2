@@ -9,8 +9,15 @@ void allEvens(Array& evens, Array& array, int evenSize, int arraySize)
     Context _("allEvens", evenSize, arraySize); // do not care about this, it allow the display of call stack
 
     // your code
-
-    return;
+    if(arraySize > 0){
+        int elem = array.get(arraySize - 1);
+        if(elem % 2 == 0){
+            evens.set(evenSize, elem);
+            allEvens(evens, array, evenSize + 1, arraySize - 1);
+        }else{
+            allEvens(evens, array, evenSize, arraySize - 1);
+        }
+    }
 }
 
 int main(int argc, char *argv[])
