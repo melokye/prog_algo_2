@@ -20,12 +20,12 @@ void insertionSort(Array& toSort){
                 change = true;
                 sorted.contains(m);
                 sorted.insert(j, n);
+                break;
             }
         }
 
-
         if(!change){
-
+            sorted.insert(i, n);
         }
     }
 
