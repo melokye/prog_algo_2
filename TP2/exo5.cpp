@@ -8,15 +8,23 @@ void merge(Array& first, Array& second, Array& result);
 
 void splitAndMerge(Array& origin)
 {
-	// stop statement = condition + return (return stop the function even if it does not return anything)
+    // stop statement = condition + return
+    // (return stop the function even if it does not return anything)
+
+    if(origin.size() < 2){
+        return;
+    }
 
 	// initialisation
-	Array& first = w->newArray(origin.size()/2);
-	Array& second = w->newArray(origin.size()-first.size());
-	
+    Array& first = w->newArray(origin.size() / 2);
+    Array& second = w->newArray(origin.size() - first.size());
+
 	// split
 
+
+
 	// recursiv splitAndMerge of lowerArray and greaterArray
+    // splitAndMerge();
 
 	// merge
 }

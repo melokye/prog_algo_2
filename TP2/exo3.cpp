@@ -8,13 +8,16 @@ MainWindow* w=nullptr;
 
 void bubbleSort(Array& toSort){
     // bubbleSort
-    // TODO à optimiser, il y a des comparaisons inutiles
     for(uint i = 0; i < toSort.size(); i++){
+        bool change = false;
         for(uint casAd = 1; casAd < toSort.size(); casAd++){
             if(toSort.get(casAd - 1) > toSort.get(casAd)){
                 toSort.swap(casAd, casAd - 1);
+                change = true;
             }
         }
+        if(!change)
+            break;
     }
 }
 
